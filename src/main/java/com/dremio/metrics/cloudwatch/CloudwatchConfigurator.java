@@ -15,7 +15,6 @@
  */
 package com.dremio.metrics.cloudwatch;
 
-import java.io.IOException;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
@@ -50,7 +49,7 @@ public class CloudwatchConfigurator extends ReporterConfigurator {
                                   @JsonProperty("duration") TimeUnit durationUnit,
                                   @JsonProperty("intervalMs") long intervalMs) {
         super();
-        this.region = Region.of(region.replace('-','_').toUpperCase());
+        this.region = Region.of(region.replace('-', '_').toUpperCase());
         this.rateUnit = Optional.ofNullable(rateUnit).orElse(TimeUnit.SECONDS);
         this.durationUnit = Optional.ofNullable(durationUnit).orElse(TimeUnit.MILLISECONDS);
         this.intervalMs = intervalMs;
@@ -83,7 +82,7 @@ public class CloudwatchConfigurator extends ReporterConfigurator {
                         .withHighResolution()
                         .withMeterUnitSentToCW(StandardUnit.BYTES)
                         .withJvmMetrics()
-                        .withGlobalDimensions("Region="+region.id(), "Instance=stage")
+                        .withGlobalDimensions("Region=" + region.id(), "Instance=stage")
                         .withDryRun()
                         .build();
 

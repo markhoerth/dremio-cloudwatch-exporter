@@ -1,7 +1,7 @@
-# Prometheus exporter for Dremio metrics
-[![Build Status](https://travis-ci.org/rymurr/dremio-prometheus-exporter.svg?branch=master)](https://travis-ci.org/dremio-hub/dremio-prometheus-exporter)
+# CloudWatch exporter for Dremio metrics
+[![Build Status](https://travis-ci.org/rymurr/dremio-cloudwatch-exporter.svg?branch=master)](https://travis-ci.org/dremio-hub/dremio-cloudwatch-exporter)
 
-This runs a [prometheus](https://https://prometheus.io/) endpoint which publishes all dremio metrics to Prometheus
+This runs a [Cloudawtch](https://aws.amazon.com/cloudwatch/) endpoint which publishes all dremio metrics to Cloudwatch
 
 ## Build
 

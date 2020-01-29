@@ -43,12 +43,16 @@
                         <configuration>
                             <artifactSet>
                                 <includes>
-                                    <include>io.prometheus:*</include>
-                                    <include>org.hdrhistogram:*</include>
+                                    <include>org.reactivestreams:reactive-streams</include>
+                                    <include>software.amazon:*</include>
+                                    <include>org.apache.httpcomponents:httpcore</include>
+                                    <include>io.netty:*</include>
+                                    <include>com.typesafe.netty:*</include>
+                                    <include>io.github.azagniotov:*</include>
                                 </includes>
                             </artifactSet>
                             <relocations>
-                            </relocations>
+                                <relocation><pattern>io.netty</pattern><shadedPattern>igacw.io.netty</shadedPattern></relocation>                            </relocations>
                             <shadedArtifactAttached>true</shadedArtifactAttached>
                             <shadedClassifierName>shaded</shadedClassifierName>
                         </configuration>

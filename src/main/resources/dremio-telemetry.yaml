@@ -25,7 +25,7 @@ auto-reload:
 metrics:
   - name: cloudwatch_reporter
     comment: >
-      Publish metrics on prometheus
+      Publish metrics on cloudwatch
     reporter:
       type: cloudwatch
       region: us-west-2
