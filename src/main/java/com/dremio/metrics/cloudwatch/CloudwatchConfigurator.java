@@ -20,6 +20,7 @@ import java.util.concurrent.TimeUnit;
 
 import com.codahale.metrics.MetricFilter;
 import com.codahale.metrics.MetricRegistry;
+import com.dremio.telemetry.api.config.ConfigModule;
 import com.dremio.telemetry.api.config.ReporterConfigurator;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -114,6 +115,17 @@ public class CloudwatchConfigurator extends ReporterConfigurator {
     public void close() {
         if (cloudWatchReporter != null) {
             cloudWatchReporter.stop();
+        }
+    }
+
+    /**
+     * Module that may be added to a jackson object mapper
+     * so it can parse jmx config.
+     */
+    public static class Module extends ConfigModule {
+        @Override
+        public void setupModule(com.fasterxml.jackson.databind.Module.SetupContext context) {
+            context.registerSubtypes(CloudwatchConfigurator.class);
         }
     }
 }

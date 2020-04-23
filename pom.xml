@@ -23,7 +23,7 @@
     <parent>
         <groupId>com.dremio</groupId>
         <artifactId>dremio-parent</artifactId>
-        <version>4.1.0-201912030136020081-49feeb75</version>
+        <version>4.2.2-202004211133290458-b550b6fa</version>
     </parent>
     <groupId>com.dremio.telemetry</groupId>
     <artifactId>dremio-telemetry-cloudwatch</artifactId>
