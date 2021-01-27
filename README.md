@@ -6,7 +6,7 @@ This runs a [Cloudwatch](https://aws.amazon.com/cloudwatch/) endpoint which publ
 ## Build
 
 1. change parent pom version in `pom.xml` to your dremio version (see https://github.com/dremio/dremio-oss to find the correct version) 
-1. `mvn clean install` 
+1. `mvn clean install -Dlicense.skip=true` 
 1. move `dremio-telemetry-cloudwatch-{version}-shaded.jar` to the `jars` directory in your dremio installation
 1. restart dremio
 
