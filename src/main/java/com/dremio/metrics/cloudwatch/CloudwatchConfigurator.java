@@ -84,7 +84,6 @@ public class CloudwatchConfigurator extends ReporterConfigurator {
                         .withMeterUnitSentToCW(StandardUnit.BYTES)
                         .withJvmMetrics()
                         .withGlobalDimensions("Region=" + region.id(), "Instance=stage")
-                        .withDryRun()
                         .build();
 
         cloudWatchReporter.start(intervalMs, TimeUnit.MILLISECONDS);
