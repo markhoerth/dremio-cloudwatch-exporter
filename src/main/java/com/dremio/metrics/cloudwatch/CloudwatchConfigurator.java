@@ -42,18 +42,21 @@ public class CloudwatchConfigurator extends ReporterConfigurator {
     private final TimeUnit rateUnit;
     private final TimeUnit durationUnit;
     private long intervalMs;
+    private final String[] tags;
     private CloudWatchReporter cloudWatchReporter;
 
     @JsonCreator
     public CloudwatchConfigurator(@JsonProperty("region") String region,
                                   @JsonProperty("rate") TimeUnit rateUnit,
                                   @JsonProperty("duration") TimeUnit durationUnit,
-                                  @JsonProperty("intervalMs") long intervalMs) {
+                                  @JsonProperty("intervalMs") long intervalMs,
+                                  @JsonProperty("tags") String[] tags) {
         super();
-        this.region = Region.of(region.replace('-', '_').toUpperCase());
+        this.region = Region.of(region);
         this.rateUnit = Optional.ofNullable(rateUnit).orElse(TimeUnit.SECONDS);
         this.durationUnit = Optional.ofNullable(durationUnit).orElse(TimeUnit.MILLISECONDS);
         this.intervalMs = intervalMs;
+        this.tags = tags;
     }
 
     @Override
@@ -72,18 +75,14 @@ public class CloudwatchConfigurator extends ReporterConfigurator {
                         .filter(filter)
                         .withPercentiles(CloudWatchReporter.Percentile.P75, CloudWatchReporter.Percentile.P99)
                         .withOneMinuteMeanRate()
-                        .withFiveMinuteMeanRate()
-                        .withFifteenMinuteMeanRate()
                         .withMeanRate()
                         .withArithmeticMean()
                         .withStdDev()
                         .withStatisticSet()
-                        .withZeroValuesSubmission()
                         .withReportRawCountValue()
                         .withHighResolution()
                         .withMeterUnitSentToCW(StandardUnit.BYTES)
-                        .withJvmMetrics()
-                        .withGlobalDimensions("Region=" + region.id(), "Instance=stage")
+                        .withGlobalDimensions(tags)
                         .build();
 
         cloudWatchReporter.start(intervalMs, TimeUnit.MILLISECONDS);

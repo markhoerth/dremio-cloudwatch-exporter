@@ -31,7 +31,5 @@ metrics:
       rate: seconds
       duration: milliseconds
       intervalMs: 60000
-    includes: []
-    excludes: []
-
+      tags: ["Region=us-west-2", "Instance=foobar"] # a list of "Key=Value" pairs for CloudWatch to identify metrics
 
