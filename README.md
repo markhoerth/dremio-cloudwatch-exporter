@@ -20,8 +20,12 @@ metrics:
     comment: >
       Publish metrics on cloudwatch
     reporter:
-    type: cloudwatch
-    port: 12543
+      type: cloudwatch
+      region: # e.g. us-west-2
+      rate: seconds
+      duration: milliseconds
+      intervalMs: 60000
+      tags: ["Region=us-west-2", "Instance=foobar"] # a list of "Key=Value" pairs for CloudWatch to identify metrics
 ```
 
 An example has been provided in the root of this repo
