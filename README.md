@@ -10,6 +10,8 @@ This runs a [Cloudwatch](https://aws.amazon.com/cloudwatch/) endpoint which publ
 1. move `dremio-telemetry-cloudwatch-{version}-shaded.jar` to the `jars` directory in your dremio installation
 1. restart dremio
 
+Note that for versions 24 and up you should build with JDK 11 rather than JDK8.
+
 ## configuration
 
 The file `dremio-telemetry.yaml` must exist on the classpath for your dremio installation and must contain the following
